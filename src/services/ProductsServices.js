@@ -8,9 +8,10 @@ const apiClient = axios.create({
         "Content-Type": "application/json"
     }
 })
+// pagenation limiting the number of pages to diplay
 export default{
-    getProducts(){
-        return apiClient.get("/productList")
+    getProducts(perPage, page){
+        return apiClient.get("/productList?_limit=" + perPage + "&_page=" + page)
     },
     getProduct(id){
         return apiClient.get("/productList/" + id)
