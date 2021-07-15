@@ -1,7 +1,13 @@
 
 
 <template>
-<span v-if = "product">{{product.name}}</span>
+
+<div id= "nav">
+    <router-link :to="{name: 'EventDetails', params: {id}}">Details </router-link>
+    <router-link :to="{name: 'Rigister', params: {id}}">Rigister </router-link>
+    <router-link :to="{name: 'Edit', params: {id}}">Edit </router-link>
+</div>
+<span>Edit product</span>
 </template>
 <script>
 /**this component displays the details of the product using its id
@@ -9,8 +15,9 @@
  * when created it uses the getproduct method from the productsServices 
  * 
  */
-import ProductsServices from "../services/ProductsServices"
+import ProductsServices from "../../services/ProductsServices"
 export default{
+    name: 'Edit',
     props:["id"],
     data(){
         
