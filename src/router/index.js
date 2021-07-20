@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import ProductDetails from "../views/product/Details"
-import Register from "../views/product/Register"
-import Edit from "../views/product/Edit"
+import ProductDetails from "../views/product/Details.vue"
+import Register from "../views/product/Register.vue"
+import ProductLayout from "../views/product/Layout.vue"
+import Edit from "../views/product/Edit.vue"
 
 const routes = [
 
@@ -15,23 +16,28 @@ const routes = [
   },
   {
     path: "/product/:id",
-    name: "ProductDetails",
-    props:true,
-    component: ProductDetails,
+    name: "ProductLayout",
+
+    component: ProductLayout,
+    children:[
+      {
+        path: "",
+        name: "ProductDetails",
+        component: ProductDetails,
+      },
+      {
+        path: "register",
+        name: "Register",
+        component: Register,
+      },
+      {
+        path: "edit",
+        name: "Edit",
+        component: Edit,
+      },
+
+    ]
   },
-  {
-    path: "/product/:id/register",
-    name: "Register",
-    props:true,
-    component: Register,
-  },
-  {
-    path: "/product/:id/edit",
-    name: "Edit",
-    props:true,
-    component: Edit,
-  },
-  
   {
     path: "/about",
     name: "About",
